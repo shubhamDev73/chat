@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var chat = $("#chatDisp");
+	chat.scrollTop(chat[0].scrollHeight);
 	function update(){
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function() {
@@ -6,7 +8,6 @@ $(document).ready(function(){
 				if(req.responseText != ''){
 					if($("#remove")) $("#remove").remove();
 					chatData = JSON.parse(req.responseText);
-					var chat = $("#chatDisp");
 					chat.html(function(x, oldHtml){
 						oldHtml += '			<h3>'+chatData.chats[0][0]+'</h3>\n';
 						oldHtml += '			<p>'+chatData.chats[0][1]+'</p><br>';

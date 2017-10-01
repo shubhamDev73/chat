@@ -4,7 +4,6 @@
 	<title>Chat</title>
 	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/scroll.js"></script>
 	<script type="text/javascript" src="/javascripts/chatSend.js"></script>
 	<script type="text/javascript" src="/javascripts/update.js"></script>
 </head>
@@ -12,7 +11,7 @@
 	<h1>Welcome <span id="nickname"><%= nickname %></span></h1><br>
 	<h2>Here is the live chat</h2><br>
 	<div id="chatDisp">
-		<% for(var i=10; i>=0; i--){
+		<% for(var i=chatData.chats.length; i>=0; i--){
 			if(i >= chatData.chats.length) continue; %>
 			<h3><%= chatData.chats[i][0] %></h3>
 			<p><%= chatData.chats[i][1] %></p><br>
