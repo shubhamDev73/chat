@@ -4,8 +4,7 @@ $(document).ready(function(){
 		req.onreadystatechange = function() {
 			if (req.readyState == 4 && req.status == 200) {
 				if(req.responseText != ''){
-					if($("#remove0")) $("#remove0").remove();
-					if($("#remove1")) $("#remove1").remove();
+					if($("#remove")) $("#remove").remove();
 					chatData = JSON.parse(req.responseText);
 					var chat = $("#chatDisp");
 					chat.html(function(x, oldHtml){

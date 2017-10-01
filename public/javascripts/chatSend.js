@@ -4,8 +4,9 @@ $(document).ready(function(){
 		var text = $("#chatInput").val();
 		var chat = $("#chatDisp");
 		chat.html(function(x, oldHtml){
-			oldHtml += '			<h3 id="remove0">'+$("#nickname").html()+'</h3>\n';
-			oldHtml += '			<p id="remove1">'+text+'<span id="status">&nbsp;&nbsp;&nbsp;&nbsp;sending...</span></p><br>';
+			oldHtml += '			<span id="remove">\n'
+			oldHtml += '				<h3>'+$("#nickname").html()+'</h3>\n';
+			oldHtml += '				<p>'+text+'<span id="status">&nbsp;&nbsp;&nbsp;&nbsp;sending...</span></p></span><br>';
 			return oldHtml;
 		});
 		chat.scrollTop(chat[0].scrollHeight);
