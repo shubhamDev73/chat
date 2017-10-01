@@ -20,6 +20,8 @@ var app = express();
 
 //chat json
 app.locals.chatData = require('./chatData.json');
+app.locals.users = 0;
+app.locals.usersToDo = 0;
 app.locals.updated = false;
 
 // view engine setup
@@ -67,6 +69,7 @@ module.exports.app = app;
 var eventEmitter = new events.EventEmitter();
 eventEmitter.on('jsonUpdated', function(){
 	app.locals.updated = true;
+	app.locals.usersToDo = app.locals.users;
 });
 
 module.exports.eventEmitter = eventEmitter;
