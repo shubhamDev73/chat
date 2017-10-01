@@ -16,7 +16,6 @@ $(document).ready(function(){
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function() {
 			if (req.readyState == 4 && req.status == 200) {
-				$("#remove").remove();
 				socket.emit('update', [nickname, text]);
 			}
 		}
@@ -24,6 +23,7 @@ $(document).ready(function(){
 		req.send();
 	});
 	socket.on('add', function(list){
+		if($("#remove")) $("#remove").remove();
 		chat.html(function(x, oldHtml){
 			oldHtml += '			<h3>'+list[0]+'</h3>\n';
 			oldHtml += '			<p>'+list[1]+'</p><br>';
