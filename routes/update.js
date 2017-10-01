@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	if(appHolder.app.updated){
+	if(appHolder.app.locals.updated){
 		//0 - base, 1 - have to update, 2 - updated
 		if(req.session.updated == 0) req.session.updated = 1
 	}else req.session.updated = 0;
@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
 				req.session.updated = 2;
 				appHolder.app.locals.usersToDo--;
 				if(appHolder.app.locals.usersToDo <= 0){
-					appHolder.app.updated = false;
+					appHolder.app.locals.updated = false;
 				}
 			}
 		});
