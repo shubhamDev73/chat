@@ -12,13 +12,15 @@ var events = require('events');
 var index = require('./routes/index');
 var chat = require('./routes/chat');
 var register = require('./routes/register');
-var submit = require('./routes/submit');
 var logout = require('./routes/logout');
+var submit = require('./routes/submit');
+var update = require('./routes/update');
 
 var app = express();
 
 //chat json
 app.locals.chatData = require('./chatData.json');
+app.locals.updated = false;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,8 +39,9 @@ app.use(session({secret: "xya94xbv948hs9034jc94h937gc29cjn94"}));
 app.use('/', index);
 app.use('/chat', chat);
 app.use('/register', register);
-app.use('/submit', submit);
 app.use('/logout', logout);
+app.use('/submit', submit);
+app.use('/update', update);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,7 +66,7 @@ module.exports.app = app;
 //chat update event
 var eventEmitter = new events.EventEmitter();
 eventEmitter.on('jsonUpdated', function(){
-	console.log("JSON updated");
+	app.locals.updated = true;
 });
 
 module.exports.eventEmitter = eventEmitter;
