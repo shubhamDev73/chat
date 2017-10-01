@@ -3,7 +3,6 @@ var router = express.Router();
 
 router.post('/', function(req, res, next) {
 	req.session.nickname = req.body.nickname;
-	console.log(req.session.nickname);
 	res.redirect('/chat/');
 });
 

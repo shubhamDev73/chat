@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var appHolder = require('../app');
+var io = require('socket.io')(require('http').Server(appHolder.app));
 
 module.exports.addChat = function(nickname, chat){
 	fs.readFile(path.dirname(__dirname)+'/chatData.json', 'utf-8', function(err, txt){
@@ -13,7 +14,11 @@ module.exports.addChat = function(nickname, chat){
 				else{
 					fs.readFile(path.dirname(__dirname)+'/chatData.json', 'utf-8', function(err, txt){
 						if(err) console.log(err);
-						else appHolder.app.locals.chatData = JSON.parse(txt);
+						else{
+							appHolder.app.locals.chatData = JSON.parse(txt);
+							appHolder.eventEmitter.emit('jsonUpdated');
+							io.emit('jsonUpdated');
+						}
 					});
 				}
 			});

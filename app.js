@@ -1,3 +1,4 @@
+//imports
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,7 +6,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var events = require('events');
 
+//routes
 var index = require('./routes/index');
 var chat = require('./routes/chat');
 var register = require('./routes/register');
@@ -30,6 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: "xya94xbv948hs9034jc94h937gc29cjn94"}));
 
+//redirecting urls
 app.use('/', index);
 app.use('/chat', chat);
 app.use('/register', register);
@@ -55,3 +59,11 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports.app = app;
+
+//chat update event
+var eventEmitter = new events.EventEmitter();
+eventEmitter.on('jsonUpdated', function(){
+	console.log("JSON updated");
+});
+
+module.exports.eventEmitter = eventEmitter;
