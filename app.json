@@ -1,7 +1,7 @@
 {
   "name": "Real time chat",
   "description": "A realtime chat system for everyone",
-  "repository": "https://github.com/heroku/node-js-getting-started",
+  "repository": "https://github.com/shubhamDev73/chat.git",
   "keywords": ["node", "express", "heroku", "chat", "realtime"],
   "image": "heroku/nodejs"
 }
