@@ -1,9 +1,9 @@
 var express = require('express');
-var appHolder = require('../app');
 var router = express.Router();
 
 router.post('/', function(req, res, next) {
-	appHolder.app.locals.username = req.body.username;
+	req.session.nickname = req.body.nickname;
+	console.log(req.session.nickname);
 	res.redirect('/chat/');
 });
 

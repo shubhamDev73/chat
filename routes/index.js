@@ -1,9 +1,8 @@
 var express = require('express');
-var appHolder = require('../app');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-	if(appHolder.app.locals.username == ''){
+	if(!req.session.nickname){
 		res.render('index');
 	}else{
 		res.redirect('/chat/');
@@ -11,7 +10,3 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
-
-
-//get:  req.param('a')
-//post: req.body.a

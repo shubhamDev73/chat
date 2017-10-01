@@ -8,13 +8,13 @@
 	<script type="text/javascript" src="/javascripts/chatSend.js"></script>
 </head>
 <body>
-	<h1>Welcome <%= username %></h1><br>
+	<h1>Welcome <span id="nickname"><%= nickname %></span></h1><br>
 	<h2>Here is the live chat</h2><br>
 	<div id="chatDisp">
 		<% for(var i=10; i>=0; i--){
 			if(i >= chatData.chats.length) continue; %>
-			<h3 class="username"><%= chatData.chats[i][0] %></h3>
-			<p class="chat"><%= chatData.chats[i][1] %></p><br>
+			<h3><%= chatData.chats[i][0] %></h3>
+			<p><%= chatData.chats[i][1] %></p><br>
 		<% } %>
 	</div>
 	<br><br>
