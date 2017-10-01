@@ -1,0 +1,10 @@
+#chatDisp{
+	height: 500px;
+	overflow-y: scroll;
+	background-color: #DDDDDD;
+	padding: 10px;
+}
+
+#chatInput{
+	width: 80%;
+}
