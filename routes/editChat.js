@@ -15,7 +15,6 @@ module.exports.addChat = function(nickname, chat){
 						if(err) console.log(err);
 						else{
 							appHolder.app.locals.chatData = JSON.parse(txt);
-							appHolder.eventEmitter.emit('jsonUpdated');
 						}
 					});
 				}

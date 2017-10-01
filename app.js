@@ -14,7 +14,6 @@ var chat = require('./routes/chat');
 var register = require('./routes/register');
 var logout = require('./routes/logout');
 var submit = require('./routes/submit');
-var update = require('./routes/update');
 
 var app = express();
 
@@ -43,7 +42,6 @@ app.use('/chat', chat);
 app.use('/register', register);
 app.use('/logout', logout);
 app.use('/submit', submit);
-app.use('/update', update);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -64,12 +62,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports.app = app;
-
-//chat update event
-var eventEmitter = new events.EventEmitter();
-eventEmitter.on('jsonUpdated', function(){
-	app.locals.updated = true;
-	app.locals.usersToDo = app.locals.users;
-});
-
-module.exports.eventEmitter = eventEmitter;
