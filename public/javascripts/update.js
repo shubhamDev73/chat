@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var socket = io();
-	socket.on('jsonUpdated'){
+	socket.on('jsonUpdated', function(){
 		alert("Called");
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function() {
@@ -16,5 +16,5 @@ $(document).ready(function(){
 		}
 		req.open("GET", "../chatData.json", true);
 		req.send();
-	}
+	});
 });
