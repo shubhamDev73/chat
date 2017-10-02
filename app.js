@@ -17,12 +17,6 @@ var submit = require('./routes/submit');
 
 var app = express();
 
-//chat json
-app.locals.chatData = require('./chatData.json');
-app.locals.users = 0;
-app.locals.usersToDo = 0;
-app.locals.updated = false;
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
